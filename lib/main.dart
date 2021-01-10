@@ -21,22 +21,36 @@ class StateTeksUtama extends State<TeksUtama> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          'Apa kabar',
-          textDirection: TextDirection.ltr,
-        ),
-        Text(
-          listNama[index % listNama.length],
-          textDirection: TextDirection.ltr,
-          style: TextStyle(
-            fontSize: 45,
-            fontWeight: FontWeight.bold,
-            color: listWarna[index % listWarna.length]
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+      margin: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.cyan[50],
+        borderRadius: BorderRadius.circular(5),
+        boxShadow: [BoxShadow(
+          color: Colors.black12,
+          spreadRadius: 2,
+          offset: Offset.fromDirection(-5.5, 6.0),
+          blurRadius: 2
+        )]
+      ),
+      child: Column(
+        children: [
+          Text(
+            'Apa kabar',
+            textDirection: TextDirection.ltr,
           ),
-        )
-      ],
+          Text(
+            listNama[index % listNama.length],
+            textDirection: TextDirection.ltr,
+            style: TextStyle(
+              fontSize: 45,
+              fontWeight: FontWeight.bold,
+              color: listWarna[index % listWarna.length]
+            ),
+          )
+        ],
+      )
     );
   }
 
@@ -61,7 +75,11 @@ void main() {
           title: Text('Halo Dunia'),
         ),
         body: Center(
-          child: teksUtama,
+          child: Column(
+            children: [
+              teksUtama
+            ],
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           tooltip: 'Random',
