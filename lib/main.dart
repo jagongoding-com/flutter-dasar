@@ -6,6 +6,11 @@ class StateTeksUtama extends State<TeksUtama> {
     'Budi', 'Andi', 'Sari', 'Rudi',
     'Nurul', 'Huda', 'Lendis', 'Fabri'
   ];
+  var listWarna = [
+    Colors.red, Colors.purple, Colors.teal, Colors.lime,
+    Colors.indigo, Colors.deepPurple, Colors.cyan,
+    Colors.blue, Colors.yellow
+  ];
   int index = 0;
 
   void incrementIndex () {
@@ -28,7 +33,7 @@ class StateTeksUtama extends State<TeksUtama> {
           style: TextStyle(
             fontSize: 45,
             fontWeight: FontWeight.bold,
-            color: Colors.red
+            color: listWarna[index % listWarna.length]
           ),
         )
       ],
