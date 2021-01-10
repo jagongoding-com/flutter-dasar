@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
 
-class TeksUtama extends StatelessWidget {
+class StateTeksUtama extends State<TeksUtama> {
 
-  final String teks1;
-  final String teks2;
+  var listNama = [
+    'Budi', 'Andi', 'Sari', 'Rudi',
+    'Nurul', 'Huda', 'Lendis', 'Fabri'
+  ];
+  int index = 0;
 
-  TeksUtama({ this.teks1, this.teks2 });
+  void incrementIndex () {
+    setState(() {
+      index++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          teks1,
+          'Apa kabar',
           textDirection: TextDirection.ltr,
         ),
         Text(
-          teks2,
+          listNama[index % listNama.length],
           textDirection: TextDirection.ltr,
           style: TextStyle(
             fontSize: 45,
@@ -27,9 +34,20 @@ class TeksUtama extends StatelessWidget {
       ],
     );
   }
+
+}
+
+class TeksUtama extends StatefulWidget {
+
+  final state = StateTeksUtama();
+
+  @override
+  State<StatefulWidget> createState() => state;
 }
 
 void main() {
+  TeksUtama teksUtama = TeksUtama();
+
   runApp(
     MaterialApp(
       title: 'Halo Dunia',
@@ -38,15 +56,12 @@ void main() {
           title: Text('Halo Dunia'),
         ),
         body: Center(
-          child: TeksUtama(
-            teks1: 'Halo',
-            teks2: 'Dunia',
-          ),
+          child: teksUtama,
         ),
         floatingActionButton: FloatingActionButton(
           tooltip: 'Random',
           child: Icon(Icons.refresh),
-          onPressed: null,
+          onPressed: teksUtama.state.incrementIndex,
         ),
       )
     )
